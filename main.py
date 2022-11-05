@@ -55,10 +55,22 @@ def read_file(file_name):
 def remove_file(file_name):
     os.remove(file_name)
 
+
 def copy_file():
     file_name = input("Введите название файла, который хотите скопировать: ")
     dict_name = input("Укажите в какую папку хоитите скопировать или путь: ")
     shutil.copy(file_name, dict_name)
+
+
+def move_file():
+    file_name = input("Введите название файла, который хотите скопировать: ")
+    dict_name = input("Укажите в какую папку хоитите скопировать или путь: ")
+    shutil.move(file_name, dict_name)
+
+def rename_file():
+    file_name = input("Введите название файла, который хотите переименовать: ")
+    new_file_name = input("Введите новое название файла: ")
+    os.rename(file_name, new_file_name)
 
 
 
@@ -104,13 +116,11 @@ while True:
     if choice == 8:
         copy_file()
 
-
     if choice == 9:
-        pass
+        move_file()
 
     if choice == 10:
-        file_name = input("Введите название файла, который хотите переименовать: ")
-        new_file_name = input("Введите новое название файла: ")
-        os.rename(file_name, new_file_name)
+        rename_file()
+
     if choice == 11:
         break
