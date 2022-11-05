@@ -25,7 +25,7 @@ def delete_folder(name):
     os.rmdir(name)
 
 
-def move_to_folder(path,root_folder):
+def move_to_folder(path, root_folder):
     while True:
         os.chdir(input("Введите имя папки, в которую хотите перейти, или путь: "))
         if root_folder in os.getcwd().split('/'):
@@ -33,10 +33,31 @@ def move_to_folder(path,root_folder):
         else:
             print("Нельзя выходить из корневой папки")
 
+
+def create_file(file_name):
+    with open(file_name, "w", encoding="utf-8") as file:
+        file.write
+
+
+def write_file(file_name):
+    with open(file_name, "w", encoding="utf-8") as file:
+        file.write(input("Введите текст, который хотите написать: "))
+
+
+def read_file(file_name):
+    with open(file_name, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+        print(f"Файл {file_name} содержит: ")
+        for line in lines:
+            print(line)
+
+
 print("""
     Настройка:
     Сначала укажите папку, в которой будем работать
                 """)
+
+# /Users/kirillanpilov/PycharmProjects/file_manager/
 path = input("Введите путь к папке: ")  # /Users/kirillanpilov/Downloads/
 os.chdir(path)
 root_folder = os.getcwd().split('/')[-1]
@@ -52,26 +73,19 @@ while True:
         name = input("Введите имя папки: ")
         delete_folder(name)
     if choice == 3:
-        move_to_folder(path,root_folder)
+        move_to_folder(path, root_folder)
 
     if choice == 4:
         file_name = input("Введите название файла: ")
-        file = open(file_name, 'w')
+        create_file(file_name)
 
     if choice == 5:
         file_name = input("Введите название файла: ")
-        with open(file_name, "w") as file:
-            print("Вводите текст в файл")
-            text = input()
-            file.write(text)
+        write_file(file_name)
 
     if choice == 6:
         file_name = input("Введите название файла: ")
-        with open(file_name, 'r') as file:
-            lines = file.readlines()
-            print("В файле ", file_name)
-            for i in lines:
-                print(i)
+        read_file(file_name)
 
     if choice == 7:
         file_name = input("Введите название файла: ")
