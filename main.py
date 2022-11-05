@@ -22,7 +22,7 @@ def create_folder(name):
 
 
 def delete_folder(name):
-    os.rmdir(name)
+    shutil.rmtree(name, ignore_errors=True)
 
 
 def move_to_folder(path, root_folder):
@@ -50,6 +50,16 @@ def read_file(file_name):
         print(f"Файл {file_name} содержит: ")
         for line in lines:
             print(line)
+
+
+def remove_file(file_name):
+    os.remove(file_name)
+
+def copy_file():
+    file_name = input("Введите название файла, который хотите скопировать: ")
+    dict_name = input("Укажите в какую папку хоитите скопировать или путь: ")
+    shutil.copy(file_name, dict_name)
+
 
 
 print("""
@@ -89,12 +99,11 @@ while True:
 
     if choice == 7:
         file_name = input("Введите название файла: ")
-        os.remove(file_name)
+        remove_file(file_name)
 
     if choice == 8:
-        file_name = input("Введите название файла, который хотите скопировать: ")
-        dict_name = input("В какую папку хоитите скопировать: ")
-        shutil.copy(file_name, dict_name)
+        copy_file()
+
 
     if choice == 9:
         pass
