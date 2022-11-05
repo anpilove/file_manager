@@ -67,11 +67,11 @@ def move_file():
     dict_name = input("Укажите в какую папку хоитите скопировать или путь: ")
     shutil.move(file_name, dict_name)
 
+
 def rename_file():
     file_name = input("Введите название файла, который хотите переименовать: ")
     new_file_name = input("Введите новое название файла: ")
     os.rename(file_name, new_file_name)
-
 
 
 print("""
